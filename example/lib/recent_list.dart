@@ -9,6 +9,9 @@ const List<MediaUrl> samples = [
       title: "Aliyun", url: "http://player.alicdn.com/video/aliyunmedia.mp4"),
   MediaUrl(
       title: "http 404", url: "https://fijkplayer.befovy.com/butterfly.flv"),
+  MediaUrl(title: "芒种(左声道)", url: "asset:///assets/mangzhong.flv", audioTrack: 1),
+  MediaUrl(title: "芒种(右声道)", url: "asset:///assets/mangzhong.flv", audioTrack: 2),
+  MediaUrl(title: "芒种(立体声)", url: "asset:///assets/mangzhong.flv"),
   MediaUrl(title: "assets file", url: "asset:///assets/butterfly.mp4"),
   MediaUrl(title: "assets file", url: "asset:///assets/birthday.mp4"),
   MediaUrl(title: "assets file 404", url: "asset:///assets/beebee.mp4"),

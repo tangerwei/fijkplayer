@@ -1,5 +1,8 @@
 # fijkplayer (Video player plugin for Flutter) Flutter 媒体播放器
 
+### 注意事项
+环境依赖 NDK21、Java17
+
 ✨ **[手把手带你写 Flutter 系统音量插件](https://www.yuque.com/befovy/share/flutter_volume)**  ✨  **[Flutter 多版本管理工具 fvm](https://github.com/befovy/fvm)** ✨
 
 [![HitCount](https://hits.dwyl.com/befovy/fijkplayer.svg)](https://hits.dwyl.com/befovy/fijkplayer) &nbsp; &nbsp;

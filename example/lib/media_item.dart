@@ -4,18 +4,21 @@ import 'video_page.dart';
 
 @immutable
 class MediaUrl {
-  const MediaUrl({required this.url, this.title});
+  const MediaUrl({required this.url, this.title, this.audioTrack});
 
   final String? title;
   final String url;
+  final int? audioTrack;
 
   MediaUrl.fromJson(Map<String, dynamic> json)
       : title = json['title'],
-        url = json['url'];
+        url = json['url'],
+        audioTrack = json['audioTrack'];
 
   Map<String, dynamic> toJson() => {
         'title': title,
         'url': url,
+        'audioTrack': audioTrack,
       };
 
   @override
@@ -60,7 +63,7 @@ class MediaItem extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => VideoScreen(url: mediaUrl.url)));
+                    builder: (context) => VideoScreen(url: mediaUrl.url, audioTrack: mediaUrl.audioTrack,)));
           },
           child: Container(
               width: double.infinity,

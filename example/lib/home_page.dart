@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SamplesScreen()));
               },
-              text: "Online Samples",
+              text: "Online Samples(声道切换)",
             ),
             HomeItem(
               onPressed: () {
