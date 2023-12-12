@@ -22,31 +22,46 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   void initState() {
     super.initState();
-    player.setOption(FijkOption.hostCategory, "enable-snapshot", 1);
-    player.setOption(FijkOption.playerCategory, "mediacodec-all-videos", 1);
     startPlay();
   }
 
   void startPlay() async {
+    await player.setOption(FijkOption.hostCategory, "enable-snapshot", 1);
     await player.setOption(FijkOption.hostCategory, "request-screen-on", 1);
     await player.setOption(FijkOption.hostCategory, "request-audio-focus", 1);
+    await player.setOption(FijkOption.playerCategory, "reconnect", 20);
+    await player.setOption(FijkOption.playerCategory, "framedrop", 20);
+    await player.setOption(
+        FijkOption.playerCategory, "enable-accurate-seek", 1);
+    await player.setOption(FijkOption.playerCategory, "mediacodec", 1);
+    await player.setOption(FijkOption.playerCategory, "packet-buffering", 0);
+    await player.setOption(FijkOption.playerCategory, "soundtouch", 1);
 
     // 设置声道
-    switch(widget.audioTrack) {
+    switch (widget.audioTrack) {
       case 1:
         print("setAudioTrack is left");
-        await player.setOption(FijkOption.playerCategory, "af", "pan=stereo|c1=c0");
+        await player.setOption(
+            FijkOption.playerCategory, "af", "pan=stereo|c0=c0|c1=c0");
         break;
       case 2:
         print("setAudioTrack is right");
-        await player.setOption(FijkOption.playerCategory, "af", "pan=stereo|c0=c1");
+        await player.setOption(
+            FijkOption.playerCategory, "af", "pan=stereo|c0=c1|c1=c1");
         break;
       default:
         print("ignore setAudioTrack");
     }
-    await player.setDataSource(widget.url, autoPlay: true).catchError((e) {
-      print("setDataSource error: $e");
-    });
+    setVideoUrl(widget.url);
+  }
+
+  Future<void> setVideoUrl(String url) async {
+    try {
+      await player.setDataSource(url, autoPlay: true, showCover: true);
+    } catch (error) {
+      print("播放-异常: $error");
+      return;
+    }
   }
 
   @override
